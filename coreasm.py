@@ -11,7 +11,7 @@
 
 import re
 
-from pygments.lexer import RegexLexer, include
+from pygments.lexer import RegexLexer, include, bygroups
 from pygments.token import *
 
 __all__ = ['CoreASMLexer']
@@ -35,6 +35,10 @@ class CoreASMLexer(RegexLexer):
             (r'//.*?\n', Comment.Single),
             (r'/\*.*?\*/', Comment.Multiline)
         ],
+        'string': [
+            (r'"(\\\\|\\"|[^"])*"', String.Double),
+            (r"'(\\\\|\\'|[^'])*'", String.Single),
+        ],
         'root': [
             include('commentsandwhitespace'),
             (r'->', Punctuation),
@@ -43,17 +47,16 @@ class CoreASMLexer(RegexLexer):
             (r'[{(\[:;,]', Punctuation),
             (r'[})\].]', Punctuation),
             (r'(for|in|while|do|return|switch|case|if|then|else)\b', Keyword),
-            (r'(include|use|option|init)', Keyword),
-            (r'CoreASM', Keyword.Namespace),
+            (r'(include)(\s+)', bygroups(Keyword, Text), 'string'),
+            (r'(CoreASM|use|init)(\s+)(\w+)', bygroups(Keyword.Namespace, Text, Name)),
+            (r'(option)(\s+)([\w.]+)(\s+)(\w+)', bygroups(Keyword.Namespace, Text, Name, Text, Name)),
             (r'(let|function|derived|rule|universe)\b', Keyword.Declaration),
             #(r'(boolean|number)\b', Keyword.Reserved),
             (r'(true|false|undef)\b', Keyword.Constant),
-            (r'(STRING|NUMBER|MAP|SET|RULE'
-             r')\b', Name.Builtin),
+            (r'(STRING|NUMBER|MAP|SET|RULE)\b', Name.Builtin),
             (r'[0-9][0-9]*\.[0-9]', Number.Float),
             (r'[0-9]+', Number.Integer),
-            (r'"(\\\\|\\"|[^"])*"', String.Double),
-            (r"'(\\\\|\\'|[^'])*'", String.Single),
+            include('string'),
         ]
     }
 
@@ -69,21 +72,27 @@ use Time
 
 option DebugInfo.activeChannels ALL
 
+include "bar.coreasm"
+
+init Foo
+
 function sBPMFunction : STRING -> RULE
 
-while (i < 5 + (2*3/4)) do {
-  if (x = true and y != undef) then {
-    //not good
-    /*
-    at least not undef
-    */
-    Crash()
+rule Foo(x) = {
+  while (i < 5 + (2*3/4)) do {
+    if (x = true and y != undef) then {
+      //not good
+      /*
+      at least not undef
+      */
+      Crash()
+    }
+    else { print "asdf!" }
   }
-  else { print "asdf!" }
-}
-
-let x = foo(y) in {
-  print "x = " + x
+  
+  let x = foo(y) in {
+    print "x = " + x
+  }
 }
 """
 
