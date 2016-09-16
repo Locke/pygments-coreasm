@@ -33,7 +33,7 @@ class CoreASMLexer(RegexLexer):
         'commentsandwhitespace': [
             (r'\s+', Text),
             (r'//.*?\n', Comment.Single),
-            (r'/\*.*?\*/', Comment.Multiline)
+            (r'/\*.*?\*/', Comment.Multiline),
         ],
         'string': [
             (r'"(\\\\|\\"|[^"])*"', String.Double),
@@ -64,7 +64,7 @@ class CoreASMLexer(RegexLexer):
 
 def main():
     from pygments import highlight
-    from pygments.formatters import TerminalFormatter
+    from pygments.formatters import TerminalFormatter, HtmlFormatter
 
     code = """
 CoreASM MyFoo
@@ -78,7 +78,7 @@ include "bar.coreasm"
 
 init Foo
 
-function sBPMFunction : STRING -> RULE
+function sBPMFunction : NUMBER * STRING -> RULE
 
 rule Foo(x) = {
   while (i < 5 + (2*3/4)) do {
@@ -99,6 +99,7 @@ rule Foo(x) = {
 """
 
     print highlight(code, CoreASMLexer(), TerminalFormatter())
+    #print highlight(code, CoreASMLexer(), HtmlFormatter())
 
 if __name__ == "__main__":
     main()
