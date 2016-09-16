@@ -59,7 +59,7 @@ class CoreASMLexer(RegexLexer):
             (r'(CoreASM|use)(\s+)(\w+)', bygroups(Keyword.Namespace, Text, Name.Namespace)),
             (r'(init)(\s+)(\w+)', bygroups(Keyword.Namespace, Text, Name.Function)),
             (r'(call)(\s+)(\w+)', bygroups(Keyword, Text, Name.Function)),
-            (r'(option)(\s+)([\w.]+)(\s+)(\w+)', bygroups(Keyword.Namespace, Text, Name, Text, Name)),
+            (r'(option)(\s+)([\w.]+)(\s+)(\w+)', bygroups(Keyword.Namespace, Text, Name, Text, Literal)),
             (r'(@)(\w+)', bygroups(Operator, Name.Function)),
             (r'(ruleelement)(\s+)(\w+)', bygroups(Operator.Word, Text, Name.Function)),
             (r'(local|let|universe|enum)\b', Keyword.Declaration),
