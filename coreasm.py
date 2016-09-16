@@ -29,6 +29,8 @@ class CoreASMLexer(RegexLexer):
 
     flags = re.DOTALL | re.UNICODE | re.MULTILINE
 
+    valid_name = r'[\w_]+'
+
     tokens = {
         'commentsandwhitespace': [
             (r'\s+', Text),
@@ -67,6 +69,8 @@ class CoreASMLexer(RegexLexer):
             (r'(input)\b', Name.Builtin),
             (r'[0-9]+', Number.Integer),
             include('string'),
+
+            (valid_name, Name),
         ]
     }
 
@@ -105,6 +109,7 @@ rule Foo(x) = {
 derived spameggs = return fish in {
   let x = foo(y) in {
     print "x = " + x
+    banana(foo, bar) := fooBanana(x, z)
     fish := << spam | spam in eggs with |spam| < x >>
   }
 }
