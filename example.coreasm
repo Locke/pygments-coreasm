@@ -11,6 +11,8 @@ init Foo
 
 function sBPMFunction : NUMBER * STRING -> RULE
 
+universe foo = {AS, DF, QW, ER}
+
 rule Foo(x) = {
   while (i < 5 + (2*3/4)) do {
     if (x = true and y != undef) then {
