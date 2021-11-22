@@ -71,7 +71,7 @@ class CoreASMLexer(RegexLexer):
             (r'(true|false|undef|self|program)\b', Keyword.Constant),
             (r'(Agents|NUMBER|BOOLEAN|ELEMENT|STRING|FUNCTION|SET|LIST|MAP|RULE)\b', Keyword.Type),
             (r'(input)\b', Name.Builtin),
-            (r'[0-9]+', Number.Integer),
+            (r'[0-9]+\b', Number.Integer),
             include('string'),
 
             (valid_name, Name),
