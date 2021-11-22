@@ -70,7 +70,8 @@ class CoreASMLexer(RegexLexer):
             (r'(ruleelement)(\s+)(\w*)', bygroups(Operator.Word, Text, Name.Function)),
             (r'(function|derived|shared|rule)(\s+)(\w*)', bygroups(Keyword.Declaration, Text, Name.Function)),
             (r'(universe|enum)(\s+)(\w*)', bygroups(Keyword.Declaration, Text, Name.Class)),
-            (r'(local|let|choose|forall|foreach|import|exists)(\s+)(\w*)', bygroups(Keyword.Declaration, Text, Name.Variable.Instance)),
+            (r'(local|choose|forall|foreach|import|exists)(\s+)(\w*)', bygroups(Keyword.Declaration, Text, Name.Variable.Instance)),
+            (r'(let)(\s+)(\w*)', bygroups(Keyword.Declaration, Text, Name.Variable.Instance)), # TODO let x = foo(1,2), y = bar() in P
             (r'(extend)(\s+)(\w+)(\s+)(with)(\s+)(\w*)', bygroups(Keyword.Declaration, Text, Name.Variable.Global, Text, Keyword, Text, Name.Variable.Instance)),
             (r'(extend)(\s+)(\w*)', bygroups(Keyword.Declaration, Text, Name.Variable.Global)),
             (r'(true|false|undef|self|program)\b', Keyword.Constant),
