@@ -43,7 +43,8 @@ class CoreASMLexer(RegexLexer):
         ],
         'root': [
             include('commentsandwhitespace'),
-            (r'(->|:=|:)', Punctuation),
+            (r'(:=)', Operator),
+            (r'(->|:)', Punctuation),
             (r'(memberof|implies|not|xor|or|and|div)\b', Operator.Word),
             (r'(subset|union|intersect|diff)\b', Operator.Word),
             (r'[{(\[,|?]', Punctuation),
