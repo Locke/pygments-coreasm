@@ -69,7 +69,7 @@ class CoreASMLexer(RegexLexer):
             (r'(function|derived|shared|rule)(\s+)(\w+)', bygroups(Keyword.Declaration, Text, Name.Function)),
             (r'(local|let|universe|enum)(\s+)(\w+)', bygroups(Keyword.Declaration, Text, Name)),
             (r'(true|false|undef|self|program)\b', Keyword.Constant),
-            (r'(Agents|NUMBER|BOOLEAN|ELEMENT|STRING|FUNCTION|SET|LIST|MAP|RULE)\b', Name.Builtin),
+            (r'(Agents|NUMBER|BOOLEAN|ELEMENT|STRING|FUNCTION|SET|LIST|MAP|RULE)\b', Keyword.Type),
             (r'(input)\b', Name.Builtin),
             (r'[0-9]+', Number.Integer),
             include('string'),
