@@ -51,7 +51,7 @@ class CoreASMLexer(RegexLexer):
             (r'[})\].]', Punctuation),
             (r'(<<|>>)', Punctuation),
             (r'(!=|<=|>=|=|[-<>+*/%])', Operator),
-            (r'(end)?(seqblock|seq|par|choose|case|iterate|forall|foreach|if)\b', Keyword),
+            (r'(end)?(seqblock|par|choose|case|iterate|forall|foreach|if)\b', Keyword),
             (r'(seq|next|return|result)\b', Keyword),
             (r'(import|extend|do|skip|pick|exists|in|is|with|holds|ifnone|then|else|while|step)\b', Keyword),
             (r'(add|remove|push|pop|shift (left|right)|(en|de)queue|from|(in)?to)\b', Keyword),
