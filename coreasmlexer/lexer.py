@@ -65,7 +65,6 @@ class CoreASMLexer(RegexLexer):
             (r'(print)\b', Name.Function.Magic),
             (r'(@)(\w+)', bygroups(Operator, Name.Function)),
             (r'(ruleelement)(\s+)(\w+)', bygroups(Operator.Word, Text, Name.Function)),
-            (r'abstract', Keyword),
             (r'(function|derived|shared|rule)(\s+)(\w+)', bygroups(Keyword.Declaration, Text, Name.Function)),
             (r'(local|let|universe|enum)(\s+)(\w+)', bygroups(Keyword.Declaration, Text, Name)),
             (r'(true|false|undef|self|program)\b', Keyword.Constant),
