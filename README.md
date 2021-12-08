@@ -16,9 +16,9 @@ This repository contains a CoreASM lexer for pygments. It's intention is to be u
 
 ## Setup
 
-One-Shot installation via: `sudo python3 setup.py install` (copies the files)
+One-Shot installation via: `sudo python3 setup.py install` (copies the files).
 
-Development installation via: `sudo python3 setup.py develop` (links to the files)
+Development installation via: `sudo python3 setup.py develop` (links to the files). Uninstall with `sudo python3 setup.py develop --uninstall`.
 
 
 ## Usage with minted
