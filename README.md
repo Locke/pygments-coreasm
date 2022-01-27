@@ -2,7 +2,7 @@
 
 ## About
 
-This repository contains a CoreASM lexer for pygments. It's intention is to be used with [minted](https://github.com/gpoore/minted).
+This repository contains a [CoreASM](https://github.com/CoreASM/coreasm.core) lexer for [Pygments](https://github.com/pygments/pygments). It's motivation is to be used with [minted](https://github.com/gpoore/minted).
 
 ## Requirements
 
@@ -38,3 +38,10 @@ Hello \coreinline{undef}!
 
 shell escape must be enabled (unless you use the draft mode), e.g. via `pdflatex -shell-escape`.
 
+## Status
+
+Developed on Debian 11 with Pygments 2.7.1 and CoreASM [v1.7.3-locke-5](https://github.com/Locke/coreasm.core/releases/tag/v1.7.3-locke-5).
+
+Coverage of the CoreASM language might still be incomplete.
+
+Contibutions / PRs are welcome.
